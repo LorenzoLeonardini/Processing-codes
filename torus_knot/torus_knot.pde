@@ -10,8 +10,7 @@
 
 ArrayList<PVector> vectors = new ArrayList<PVector>();
 
-void setup()
-{
+void setup(){
   fullScreen(P3D);
 }
 
@@ -26,8 +25,7 @@ int nlongitude = 7, nmeridian = 4;
 // The speed is used to decide how fast the animation should be
 int speed = 8;
 
-void draw()
-{
+void draw() {
   background(0);
   
   // Translate to the center and rotate everything
@@ -40,8 +38,7 @@ void draw()
   float x, y, z;
   float mu;
 
-  for (int j = 0; j < speed; j++)
-  {
+  for (int j = 0; j < speed; j++) {
     // Do the bad calculation
     mu = i * TWO_PI * nmeridian / 1000f;
     x = cos(mu) * (1 + cos(nlongitude * mu / (float) nmeridian) / 2.0);
@@ -64,8 +61,7 @@ void draw()
   strokeWeight(8);
   noFill();
   beginShape();
-  for (PVector v : vectors)
-  {
+  for (PVector v : vectors) {
     float r = map(v.x, -100, 100, 100, 255);
     float g = map(v.y, -100, 100, 100, 255);
     stroke(r, g, v.mag());
@@ -77,8 +73,7 @@ void draw()
   // If i >= 1000 so the knot has already been constructed, just start deleting it from the
   // start to the end, when finished removing all the points from the list, set i to 0 so
   // it can start everything again
-  if (i >= 1000)
-  {
+  if (i >= 1000) {
     for (int j = 0; j < speed; j++)
       if (vectors.size() != 0)
         vectors.remove(0);
